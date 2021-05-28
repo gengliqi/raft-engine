@@ -643,6 +643,13 @@ where
     pub fn entries_size(&self) -> usize {
         self.entries_size
     }
+
+    pub fn merge(&mut self, src: Self) {
+        for item in src.items {
+            self.items.push(item);
+        }
+        self.entries_size += src.entries_size;
+    }
 }
 
 pub fn test_batch_checksum(buf: &[u8]) -> Result<()> {
